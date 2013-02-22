@@ -7,7 +7,7 @@ class Array
       if argument.values.first.class == Array
         self.each{
           |x|
-          if argument.values.first.include?(x.size)
+          if argument.values.first.include?(x.send(argument.keys.first))
             collect << x
             break
           end
@@ -15,7 +15,7 @@ class Array
       else
         self.each{
           |x|
-          if argument.values.first == x.size
+          if argument.values.first == x.send(argument.keys.first)
             collect << x
              break
           end
@@ -24,11 +24,11 @@ class Array
    else
       min = argument.values.last.values.first
       max = argument.values.last.values.last
-      self.each{
+      self[min..max].each{
         |x|
-        if x.size <= max && x.size >= min
+      #  if x.send(arguments.keys.first) <= max && x.size >= min
           collect << x
-        end
+       # end
       }
     end
     puts collect
@@ -41,7 +41,7 @@ class Array
   end
 end
 
-a = Array.new(["a", "aa", "Deeo", "odeo"])
+a = Array.new(["a", "aa", "Deeo", "odeo","h","hello"])
 puts "SIZE ******"
 a.select_all(:size => 4)
 a.select_all(:size => [4,2])
