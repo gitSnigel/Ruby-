@@ -9,7 +9,6 @@ class Array
           |x|
           if argument.values.first.include?(x.send(argument.keys.first))
             collect << x
-            break
           end
         }
       else
@@ -17,7 +16,6 @@ class Array
           |x|
           if argument.values.first == x.send(argument.keys.first)
             collect << x
-             break
           end
       }
       end
@@ -26,9 +24,7 @@ class Array
       max = argument.values.last.values.last
       self[min..max].each{
         |x|
-      #  if x.send(arguments.keys.first) <= max && x.size >= min
           collect << x
-       # end
       }
     end
     puts collect
