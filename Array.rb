@@ -27,21 +27,21 @@ class Array
           collect << x
       }
     end
-    puts collect
     return collect
-  end
+  end #select_all
 
   def select_first(args = {})
     raise TypeError, "You have to have less args" unless args.size < 3
-    select_all(args)[0]
-  end
-end
+    return  select_all(args)[0]
+  end #select_first
 
-a = Array.new(["a", "aa", "Deeo", "odeo","h","hello"])
+end #Array
+
+a = Array.new(["a", "aa", "Deeo", "odeo","hh","hello"])
 puts "SIZE ******"
-a.select_all(:size => 4)
-a.select_all(:size => [4,2])
+puts a.select_all(:size => 4)
+puts a.select_all(:size => [4,2])
 puts "INTERVAL ********"
-a.select_all(:name => :attribute, :interval =>{:min => 2, :max => 4})
+puts a.select_all(:name => :attribute, :interval =>{:min => 2, :max => 4})
 puts"TEST *****"
-a.select_first(:size => 2)
+puts a.select_first(:size => 2)
