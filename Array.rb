@@ -20,7 +20,7 @@ class Array
       }
       end
    else
-      puts argument
+     # puts argument
       min = argument.values.first.values.first
       max = argument.values.first.values.last
       self.each{
@@ -39,17 +39,14 @@ class Array
   end #select_first
 
   def method_missing(name, *args)
+
     if attribute = name.to_s.match(/^select_first_where_(.*)_is$/)
-     puts "vad blir under "
        select_first(attribute[1].to_sym => args)
     elsif attribute = name.to_s.match(/^select_first_where_(.*)_is_in$/)
-      puts "elsif"
       select_first(:name => attribute[1].to_sym, :interval => {:min => args[0], :max => args[1]})
     elsif  attribute = name.to_s.match(/^select_all_where_(.*)_is$/)
       select_all(attribute[1] => args)
     elsif attribute = name.to_s.match(/^select_all_where_(.*)_is_in$/)
-      puts args[1]
-      puts args[0]
       select_all(:name => attribute[1].to_sym, :interval => {:min => args[0], :max => args[1]})
     end
 
